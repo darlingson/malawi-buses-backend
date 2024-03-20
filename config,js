@@ -1,3 +1,5 @@
+require('dotenv').config(); // Load environment variables from .env file
+
 module.exports = {
-  dbURL: 'mongodb://localhost:27017/busticketapp',
+  dbURL: process.env.DB_CONNECTION_STRING,
 };
