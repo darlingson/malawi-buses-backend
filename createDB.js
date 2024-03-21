@@ -1,8 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
-const { bookingSchema, routeSchema, busSchema, userSchema } = require('./schemas');
+const { bookingSchema, routeSchema, busSchema, userSchema } = require('./sqliteDBSchemaModels');
 
 function createDatabase() {
-  const db = new sqlite3.Database('./data/mydatabase.db', (err) => {
+  const db = new sqlite3.Database('./mydatabase.db', (err) => {
     if (err) {
       console.error('Error connecting to SQLite database:', err.message);
     } else {
