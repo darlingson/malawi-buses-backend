@@ -14,13 +14,13 @@ const db = new sqlite3.Database('./mydatabase.db', (err) => {
 function seedDatabase() {
   // Insert sample buses
   const buses = [
-    { name: 'Tam Tam' },
-    { name: 'Captain' },
-    { name: 'Team Kwezy' }
+    { name: 'Tam Tam', contact: '1234567891', stage: 'wenela' },
+    { name: 'Captain',contact: '1234567892', stage: 'wenela' },
+    { name: 'Team Kwezy',contact: '1234567893', stage: 'wenela' }
   ];
-  const busInsertQuery = `INSERT INTO Bus (name) VALUES (?)`;
+  const busInsertQuery = `INSERT INTO Bus (name, contact, stage) VALUES (?, ?, ?)`;
   buses.forEach((bus) => {
-    db.run(busInsertQuery, [bus.name], (err) => {
+    db.run(busInsertQuery, [bus.name, bus.contact, bus.stage], (err) => {
       if (err) {
         console.error('Error inserting bus:', err.message);
       } else {
@@ -33,9 +33,9 @@ function seedDatabase() {
   const routes = [
     { start: 'Blantyre', destination: 'Lilongwe', takeoffTime: '08:00', arrivalTime: '11:00', price: 20000, busId: 1 },
   ];
-  const routeInsertQuery = `INSERT INTO Route (start, destination, takeoffTime, arrivalTime, price) VALUES (?, ?, ?, ?, ?)`;
+  const routeInsertQuery = `INSERT INTO Route (start, destination, takeoffTime, arrivalTime, price, busId) VALUES (?, ?, ?, ?, ?, ?)`;
   routes.forEach((route) => {
-    db.run(routeInsertQuery, [route.start, route.destination, route.takeoffTime, route.arrivalTime, route.price], (err) => {
+    db.run(routeInsertQuery, [route.start, route.destination, route.takeoffTime, route.arrivalTime, route.price, route.busId], (err) => {
       if (err) {
         console.error('Error inserting route:', err.message);
       } else {

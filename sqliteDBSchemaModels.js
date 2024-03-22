@@ -28,7 +28,6 @@ const busSchema = `
 CREATE TABLE IF NOT EXISTS Bus (
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    name TEXT NOT NULL,
     contact TEXT NOT NULL,
     stage TEXT NOT NULL
 );`;

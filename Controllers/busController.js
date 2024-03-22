@@ -22,8 +22,6 @@ const db = new sqlite3.Database('./mydatabase.db', (err) => {
 
 exports.getAllBuses = async (req, res) => {
   const sql = `SELECT * FROM Bus`;
-  // const sql = `SELECT * FROM sqlite_master WHERE type='table'`;
-
   db.all(sql, [], (err, buses) => {
     if (err) {
       return res.status(500).json({ message: err.message });
@@ -31,3 +29,13 @@ exports.getAllBuses = async (req, res) => {
     res.json(buses);
   });
 };
+exports.getBusRoutes = async (req, res) => {
+  const sql = `SELECT * FROM Route WHERE busId = ?`;
+  const busId = req.params.busId;
+  db.all(sql, [busId], (err, routes) => {
+    if (err) {
+      return res.status(500).json({ message: err.message });
+    }
+    res.json(routes);
+  })
+}
