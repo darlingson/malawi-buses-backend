@@ -31,6 +31,8 @@ exports.getAllBuses = async (req, res) => {
 };
 exports.getBusRoutes = async (req, res) => {
   const bus = req.query.bus;
+  const starttime = req.query.starttime;
+  const destination = req.query.destination;
   let sql = `SELECT * FROM Route`;
   const params = [];
 
@@ -38,7 +40,15 @@ exports.getBusRoutes = async (req, res) => {
     sql += ` WHERE busId = ?`;
     params.push(bus);
   }
-
+  if (starttime) {
+    sql += ` WHERE takeoffTime >= ?`;
+    params.push(starttime);
+  }
+  if (destination) {
+    sql += ` WHERE destination = ?`;
+    params.push(destination);
+  }
+console.log(sql);
   db.all(sql, params, (err, routes) => {
     if (err) {
       return res.status(500).json({ message: err.message });
