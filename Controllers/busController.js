@@ -87,7 +87,7 @@ exports.getStarts = async (req, res) => {
   });
 }
 exports.getStages = async (req, res) => {
-  const sql = `SELECT DISTINCT stage,name FROM Bus`;
+  const sql = `SELECT DISTINCT stage FROM Bus`;
   db.all(sql, [], (err, stages) => {
     if (err) {
       return res.status(500).json({ message: err.message });
