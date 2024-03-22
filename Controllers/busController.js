@@ -67,3 +67,31 @@ exports.getRouteFromKeyword = async (req, res) => {
     res.json(routes);
   });
 }
+
+exports.getDestinations = async (req, res) => {
+  const sql = `SELECT DISTINCT destination,busId,name FROM Route JOIN Bus ON Route.busId = Bus._id`;
+  db.all(sql, [], (err, destinations) => {
+    if (err) {
+      return res.status(500).json({ message: err.message });
+    }
+    res.json(destinations);
+  });
+}
+exports.getStarts = async (req, res) => {
+  const sql = `SELECT DISTINCT start,busId,name FROM Route JOIN Bus ON Route.busId = Bus._id`;
+  db.all(sql, [], (err, starts) => {
+    if (err) {
+      return res.status(500).json({ message: err.message });
+    }
+    res.json(starts);
+  });
+}
+exports.getStages = async (req, res) => {
+  const sql = `SELECT DISTINCT stage,name FROM Bus`;
+  db.all(sql, [], (err, stages) => {
+    if (err) {
+      return res.status(500).json({ message: err.message });
+    }
+    res.json(stages);
+  });
+}
