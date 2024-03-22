@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 
 // Connect to SQLite database
-const db = new sqlite3.Database('./data/mydatabase.db', (err) => {
+const db = new sqlite3.Database('./mydatabase.db', (err) => {
   if (err) {
     console.error('Error connecting to SQLite database:', err.message);
   } else {
@@ -14,9 +14,9 @@ const db = new sqlite3.Database('./data/mydatabase.db', (err) => {
 function seedDatabase() {
   // Insert sample buses
   const buses = [
-    { name: 'Bus 1' },
-    { name: 'Bus 2' },
-    { name: 'Bus 3' }
+    { name: 'Tam Tam' },
+    { name: 'Captain' },
+    { name: 'Team Kwezy' }
   ];
   const busInsertQuery = `INSERT INTO Bus (name) VALUES (?)`;
   buses.forEach((bus) => {
@@ -31,9 +31,7 @@ function seedDatabase() {
 
   // Insert sample routes
   const routes = [
-    { start: 'Start 1', destination: 'Destination 1', takeoffTime: '2024-03-22 08:00', arrivalTime: '2024-03-22 12:00', price: 10 },
-    { start: 'Start 2', destination: 'Destination 2', takeoffTime: '2024-03-22 09:00', arrivalTime: '2024-03-22 13:00', price: 15 },
-    { start: 'Start 3', destination: 'Destination 3', takeoffTime: '2024-03-22 10:00', arrivalTime: '2024-03-22 14:00', price: 20 }
+    { start: 'Blantyre', destination: 'Lilongwe', takeoffTime: '08:00', arrivalTime: '11:00', price: 20000, busId: 1 },
   ];
   const routeInsertQuery = `INSERT INTO Route (start, destination, takeoffTime, arrivalTime, price) VALUES (?, ?, ?, ?, ?)`;
   routes.forEach((route) => {
@@ -49,8 +47,6 @@ function seedDatabase() {
   // Insert sample users
   const users = [
     { username: 'user1', email: 'user1@example.com', password: 'password1' },
-    { username: 'user2', email: 'user2@example.com', password: 'password2' },
-    { username: 'user3', email: 'user3@example.com', password: 'password3' }
   ];
   const userInsertQuery = `INSERT INTO User (username, email, password) VALUES (?, ?, ?)`;
   users.forEach((user) => {

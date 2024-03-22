@@ -15,17 +15,22 @@ CREATE TABLE IF NOT EXISTS Booking (
 const routeSchema = `
 CREATE TABLE IF NOT EXISTS Route (
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    busId INTEGER NOT NULL,
     start TEXT NOT NULL,
     destination TEXT NOT NULL,
     takeoffTime DATETIME NOT NULL,
     arrivalTime DATETIME NOT NULL,
-    price REAL NOT NULL
+    price REAL NOT NULL,
+    FOREIGN KEY (busId) REFERENCES Bus(_id)
 );`;
 
 const busSchema = `
 CREATE TABLE IF NOT EXISTS Bus (
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL
+    name TEXT NOT NULL,
+    name TEXT NOT NULL,
+    contact TEXT NOT NULL,
+    stage TEXT NOT NULL
 );`;
 
 const userSchema = `
