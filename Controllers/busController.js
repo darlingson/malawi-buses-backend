@@ -46,3 +46,14 @@ exports.getBusRoutes = async (req, res) => {
     res.json(routes);
   });
 };
+exports.getRouteFromKeyword = async (req, res) => {
+  const keyword = req.query.keyword;
+  const sql = `SELECT * FROM Route WHERE start LIKE ? OR destination LIKE ?`;
+  const params = [`%${keyword}%`, `%${keyword}%`];
+  db.all(sql, params, (err, routes) => {
+    if (err) {
+      return res.status(500).json({ message: err.message });
+    }
+    res.json(routes);
+  });
+}

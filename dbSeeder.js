@@ -32,6 +32,14 @@ function seedDatabase() {
   // Insert sample routes
   const routes = [
     { start: 'Blantyre', destination: 'Lilongwe', takeoffTime: '08:00', arrivalTime: '11:00', price: 20000, busId: 1 },
+    { start: 'Blantyre', destination: 'Lilongwe', takeoffTime: '08:00', arrivalTime: '11:00', price: 20000, busId: 2 },
+    { start: 'Blantyre', destination: 'Lilongwe', takeoffTime: '08:00', arrivalTime: '11:00', price: 20000, busId: 3 },
+    { start: 'Lilongwe', destination: 'Blantyre', takeoffTime: '08:00', arrivalTime: '11:00', price: 20000, busId: 1 },
+    { start: 'Lilongwe', destination: 'Blantyre', takeoffTime: '08:00', arrivalTime: '11:00', price: 20000, busId: 2 },
+    { start: 'Lilongwe', destination: 'Blantyre', takeoffTime: '08:00', arrivalTime: '11:00', price: 20000, busId: 3 },
+    { start: 'Lilongwe', destination: 'Mzuzu', takeoffTime: '13:00', arrivalTime: '15:00', price: 20000, busId: 1 },
+    { start: 'Lilongwe', destination: 'Mzuzu', takeoffTime: '13:00', arrivalTime: '15:00', price: 20000, busId: 2 },
+    { start: 'Lilongwe', destination: 'Mzuzu', takeoffTime: '13:00', arrivalTime: '15:00', price: 20000, busId: 3 },
   ];
   const routeInsertQuery = `INSERT INTO Route (start, destination, takeoffTime, arrivalTime, price, busId) VALUES (?, ?, ?, ?, ?, ?)`;
   routes.forEach((route) => {
