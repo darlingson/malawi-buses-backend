@@ -8,4 +8,9 @@ router.get('/search', busController.getRouteFromKeyword);
 router.get('/destinations', busController.getDestinations);
 router.get('/starts', busController.getStarts);
 router.get('/stages', busController.getStages);
+
+//root route
+router.get('/', (req, res) => res.json({
+    message: 'Welcome to the Malawi Bus Tracker API!',
+}));
 module.exports = router;
