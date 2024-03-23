@@ -10,9 +10,9 @@
 // };
 
 const sqlite3 = require('sqlite3').verbose();
-
+const dbpath = "../mydatabase.db";
 // Connect to SQLite database
-const db = new sqlite3.Database('./mydatabase.db', (err) => {
+const db = new sqlite3.Database(dbpath, (err) => {
   if (err) {
     console.error('Error connecting to SQLite database:', err.message);
   } else {
